@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS - Technical Documentation Page</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav id="navbar">
+        <header>
+            <h1><i class="fab fa-css3-alt"></i> CSS</h1>
+        </header>
+        <ul>
+            <li><a href="#Introduction" class="nav-link">Introduction</a></li>
+            <li><a href="#CSS_syntax" class="nav-link">CSS syntax</a></li>
+            <li><a href="#Adding_CSS_to_our_document" class="nav-link">Adding CSS to our document</a></li>
+            <li><a href="#Styling_HTML_elements" class="nav-link">Styling HTML elements</a></li>
+            <li><a href="#Selectors" class="nav-link">Selectors</a></li>
+            <li><a href="#Properties_and_values" class="nav-link">Properties and values</a></li>
+            <li><a href="#How_does_CSS_actually_work?" class="nav-link">How does CSS actually work?</a></li>
+            <li><a href="#About_the_DOM" class="nav-link">About the DOM</a></li>
+            <li><a href="#A_real_DOM_representation" class="nav-link">A real DOM representation</a></li>
+            <li><a href="#What_happens_if_a_browser_encounters_CSS_it_doesn't_understand?" class="nav-link">What happens if a browser encounters CSS it doesn't understand?</a></li>
+            <li><a href="#Reference" class="nav-link">Reference</a></li>
+        </ul>
+    </nav>
+    <main id="main-doc">
+        <section id="Introduction" class="main-section">
+            <header>
+                <h2>Introduction</h2>
+            </header>
+            <p>CSS (Cascading Style Sheets) allows you to create great-looking web pages, CSS is a language for specifying how documents are presented to users — how they are styled, laid out, etc.
+                A document is usually a text file structured using a markup language — HTML is the most common markup language, but you may also come across other markup languages such as SVG or XML.
+                Presenting a document to a user means converting it into a form usable by your audience. Browsers, like Firefox, Chrome, or Edge , are designed to present documents visually, for example, on a computer screen, projector or printer.
+                CSS can be used for very basic document text styling — for example changing the color and size of headings and links. It can be used to create layout — for example turning a single column of text into a layout with a main content area and a sidebar for related information. It can even be used for effects such as animation. Have a look at the links in this paragraph for specific examples.</p>
+            
+            <img src="https://i1.wp.com/blog.logrocket.com/wp-content/uploads/2020/07/CSS-logo.png?fit=730%2C412" alt="css">
+            
+            
+        </section>
+        <section id="CSS_syntax" class="main-section">
+            <header>
+                <h2>CSS syntax</h2>
+            </header>
+            <p>CSS is a rule-based language — you define rules specifying groups of styles that should be applied to particular elements or groups of elements on your web page. For example "I want the main heading on my page to be shown as large red text."
+                The following code shows a very simple CSS rule that would achieve the styling described above:
+            </p>
+            <code>
+                h1 {
+                  color: red;
+                  font-size: 5em;
+                }
+            </code>
+            <p>
+                The rule opens with a selector . This selects the HTML element that we are going to style. In this case we are styling level one headings (h1).
+                We then have a set of curly braces { }. Inside those will be one or more declarations, which take the form of property and value pairs. Each pair specifies a property of the element(s) we are selecting, then a value that we'd like to give the property.
+                Before the colon, we have the property, and after the colon, the value. CSS properties have different allowable values, depending on which property is being specified. In our example, we have the color property, which can take various color values. We also have the font-size property. This property can take various size units as a value.
+                A CSS stylesheet will contain many such rules, written one after the other.
+            </p>
+            <code>
+                h1 {
+                  color: red;
+                  font-size: 5em;
+                }
+                p {
+                  color: black;
+                }
+            </code>
+            <p>
+              You will find that you quickly learn some values, whereas others you will need to look up. The individual property pages on MDN give you a quick way to look up properties and their values when you forget, or want to know what else you can use as a value.
+            </p>
+        </section>
+        <section id="Adding_CSS_to_our_document" class="main-section">
+            <header>
+                <h2>Adding CSS to our document</h2>
+            </header>
+            <p>
+              The very first thing we need to do is to tell the HTML document that we have some CSS rules we want it to use. There are three different ways to apply CSS to an HTML document that you'll commonly come across, however, for now, we will look at the most usual and useful way of doing so — linking CSS from the head of your document.
+              Create a file in the same folder as your HTML document and save it as styles.css. The .css extension shows that this is a CSS file.
+              To link styles.css to index.html add the following line somewhere inside the
+                head of the HTML document:
+            </p>
+            <code>
+                < link rel="stylesheet" href="styles.css">
+            </code>
+            <p> This link element tells the browser that we have a stylesheet, using the rel attribute, and the location of that stylesheet as the value of the href attribute. You can test that the CSS works by adding a rule to styles.css. Using your code editor add the following to your CSS file:
+            </p>
+            <code>
+                h1 {
+                  color: red;
+                }
+            </code>
+            <p>
+                Save your HTML and CSS files and reload the page in a web browser. The level one heading at the top of the document should now be red. If that happens, congratulations — you have successfully applied some CSS to an HTML document. If that doesn't happen, carefully check that you've typed everything correctly.
+                You can continue to work in styles.css locally, or you can use our interactive editor below to continue with this tutorial. The interactive editor acts as if the CSS in the first panel is linked to the HTML document, just as we have with our document above.
+            </p>
+        </section>
+        <section id="Styling_HTML_elements" class="main-section">
+            <header>
+                <h2>Styling HTML elements</h2>
+            </header>
+            <p>
+                By making our heading red we have already demonstrated that we can target and style an HTML element. We do this by targeting an element selector — this is a selector that directly matches an HTML element name. To target all paragraphs in the document you would use the selector p. To turn all paragraphs green you would use:
+            </p>
+            <code>
+                p {
+                  color: green;
+                }
+            </code>
+            <p>You can target multiple selectors at once, by separating the selectors with a comma. If I want all paragraphs and all list items to be green my rule looks like this:</p>
+            <code>
+                p, li {
+                  color: green;
+                }
+            </code>
+            <p>
+                Try this out in the interactive editor below (edit the code boxes), or in your local CSS document.
+            </p>
+        </section>
+        <section id="Selectors" class="main-section">
+            <header>
+                <h2>Selectors</h2>
+            </header>
+            <p>A selector targets HTML to apply styles to content. We have already discovered a variety of selectors in the Getting started with CSS tutorial. If CSS is not applying to content as expected, your selector may not match the way you think it should match.
+                Each CSS rule starts with a selector — or a list of selectors — in order to tell the browser which element or elements the rules should apply to. All the examples below are valid selectors or lists of selectors.</p>
+            <code>
+                h1
+                a:link
+                .manythings
+                #onething
+                *
+                .box p
+                .box p:first-child
+                h1, h2, .intro
+            </code>
+            <h3>Specificity</h3>
+            <p>You may encounter scenarios where two selectors select the same HTML element. Consider the stylesheet below, with a p selector that sets paragraph text to blue. However, there is also a class that sets the text of selected elements to red.</p>
+            <code>
+                .special {
+                  color: red;
+                }
+                p {
+                  color: blue;
+                }
+            </code>
+            <p>Suppose that in our HTML document, we have a paragraph with a class of special. Both rules apply. Which selector prevails? Do you expect to see blue or red paragraph text?</p>
+            <code>
+                < p class="special">What color am I?</ p>
+            </code>
+            <p>The CSS language has rules to control which selector is stronger in the event of a conflict. These rules are called cascade and specificity. In the code block below, we define two rules for the p selector, but the paragraph text will be blue. This is because the declaration that sets the paragraph text to blue appears later in the stylesheet. Later styles replace conflicting styles that appear earlier in the stylesheet. This is the cascade rule.</p>
+            <code>
+                p {
+                  color: red;
+                }
+                p {
+                  color: blue;
+                }
+            </code>
+            <p>
+                However, in the case of our earlier example with the conflict between the class selector and the element selector, the class prevails, rendering the paragraph text red. How can this happen even though a conflicting style appears later in the stylesheet? A class is rated as being more specific, as in having more specificity than the element selector, so it cancels the other conflicting style declaration.
+                Try this experiment for yourself! Add HTML, then add the two p { ... } rules to your stylesheet. Next, change the first p selector to .special to see how it changes the styling.
+                The rules of specificity and the cascade can seem complicated at first. These rules are easier to understand as you become more familiar with CSS. The Cascade and inheritance section in the next module explains this in detail, including how to calculate specificity.
+                For now, remember that specificity exists. Sometimes, CSS might not apply as you expected because something else in the stylesheet has more specificity. Recognizing that more than one rule could apply to an element is the first step in fixing these kinds of issues.
+            </p>
+        </section>
+        <section id="Properties_and_values" class="main-section">
+            <header>
+                <h2>Properties and values</h2>
+            </header>
+            <p>
+                At its most basic level, CSS consists of two components:
+                <ul>
+                    <li>Properties: These are human-readable identifiers that indicate which stylistic features you want to modify. For example, font-size, width, background-color.</li>
+                    <li> Values: Each property is assigned a value. This value indicates how to style the property.</li>
+                </ul>
+                The example below highlights a single property and value. The property name is color and the value is blue.
+            </p>
+            <img src="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/How_CSS_is_structured/declaration.png">
+            <p>When a property is paired with a value, this pairing is called a CSS declaration. CSS declarations are found within CSS Declaration Blocks. In the example below, highlighting identifies the CSS declaration block.</p>
+            <img src="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/How_CSS_is_structured/declaration-block.png">
+            <p>Finally, CSS declaration blocks are paired with selectors to produce CSS rulesets (or CSS rules). The example below contains two rules: one for the h1 selector and one for the p selector. The colored highlighting identifies the h1 rule.</p>
+            <img src="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/How_CSS_is_structured/rules.png">
+            <p>Setting CSS properties to specific values is the primary way of defining layout and styling for a document. The CSS engine calculates which declarations apply to every single element of a page.
+                Look up different values of properties listed below. Write CSS rules that apply styling to different HTML elements:
+                <ul>
+                    <li>font-size</li>
+                    <li>width</li>
+                    <li>background-color</li>
+                    <li>color</li>
+                    <li>border</li>
+                </ul>
+            </p>
+        </section>
+        <section id="How_does_CSS_actually_work?" class="main-section">
+            <header>
+                <h2>How does CSS actually work?</h2>
+            </header>
+            <p>
+                When a browser displays a document, it must combine the document's content with its style information. It processes the document in a number of stages, which we've listed below. Bear in mind that this is a very simplified version of what happens when a browser loads a webpage, and that different browsers will handle the process in different ways. But this is roughly what happens.
+                <ol>
+                    <li>The browser loads the HTML (e.g. receives it from the network).</li>
+                    <li>It converts the HTML into a DOM (Document Object Model). The DOM represents the document in the computer's memory. The DOM is explained in a bit more detail in the next section.</li>
+                    <li>The browser then fetches most of the resources that are linked to by the HTML document, such as embedded images and videos ... and linked CSS! JavaScript is handled a bit later on in the process, and we won't talk about it here to keep things simpler.</li>
+                    <li>The browser parses the fetched CSS, and sorts the different rules by their selector types into different "buckets", e.g. element, class, ID, and so on. Based on the selectors it finds, it works out which rules should be applied to which nodes in the DOM, and attaches style to them as required (this intermediate step is called a render tree).</li>
+                    <li>The render tree is laid out in the structure it should appear in after the rules have been applied to it.</li>
+                    <li>The visual display of the page is shown on the screen (this stage is called painting).</li>
+                </ol>
+                The following diagram also offers a simple view of the process.
+            </p>
+            <img src="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/How_CSS_works/rendering.svg">
+        </section>
+        <section id="About_the_DOM" class="main-section">
+            <header>
+                <h2>About the DOM</h2>
+            </header>
+            <p>A DOM has a tree-like structure. Each element, attribute, and piece of text in the markup language becomes a DOM node in the tree structure. The nodes are defined by their relationship to other DOM nodes. Some elements are parents of child nodes, and child nodes have siblings.
+                Understanding the DOM helps you design, debug and maintain your CSS because the DOM is where your CSS and the document's content meet up. When you start working with browser DevTools you will be navigating the DOM as you select items in order to see which rules apply.</p>
+        </section>
+        <section id="A_real_DOM_representation" class="main-section">
+            <header>
+                <h2>A real DOM representation</h2>
+            </header>
+            <p>
+                Rather than a long, boring explanation, let's look at an example to see how a real HTML snippet is converted into a DOM.
+                Take the following HTML code:
+            </p>
+            <code>
+                < p>
+                    Let's use:
+                    < span>Cascading< /span>
+                    < span>Style< /span>
+                    < span>Sheets< /span>
+                < /p>
+            </code>
+            <p>
+                In the DOM, the node corresponding to our p element is a parent. Its children are a text node and the three nodes corresponding to our span elements. The SPAN nodes are also parents, with text nodes as their children:
+            </p>
+            <code>
+                P
+                ├─ "Let's use:"
+                ├─ SPAN
+                | └─ "Cascading"
+                ├─ SPAN
+                | └─ "Style"
+                └─ SPAN
+                └─ "Sheets"
+            </code>
+            <p>
+                This is how a browser interprets the previous HTML snippet —it renders the above DOM tree and then outputs it in the browser like so:
+            </p>
+            <code>
+                Let's use: Cascading Style Sheets
+            </code>
+        </section>
+        <section id="What_happens_if_a_browser_encounters_CSS_it_doesn't_understand?" class="main-section">
+            <header>
+                <h2>What happens if a browser encounters CSS it doesn't understand?</h2>
+            </header>
+            <p>
+                In an earlier lesson I mentioned that browsers do not all implement new CSS at the same time. In addition, many people are not using the latest version of a browser. Given that CSS is being developed all the time, and is therefore ahead of what browsers can recognize, you might wonder what happens if a browser encounters a CSS selector or declaration it doesn't recognize.
+                The answer is that it does nothing, and just moves on to the next bit of CSS!
+                If a browser is parsing your rules, and encounters a property or value that it doesn't understand, it ignores it and moves on to the next declaration. It will do this if you have made an error and misspelled a property or value, or if the property or value is just too new and the browser doesn't yet support it.
+                Similarly, if a browser encounters a selector that it doesn't understand, it will just ignore the whole rule and move on to the next one.
+                In the example below I have used the British English spelling for color, which makes that property invalid as it is not recognized. So my paragraph has not been colored blue. All of the other CSS have been applied however; only the invalid line is ignored.
+            </p>
+            <code>
+                < p> I want this text to be large, bold and blue.< /p>
+            </code>
+            <code>
+                p {
+                  font-weight: bold;
+                  colour: blue; /* incorrect spelling of the color property */
+                  font-size: 200%;
+                }
+            </code>
+            <code>
+                I want this text to be large, bold and blue.
+            </code>
+            <p>
+                This behavior is very useful. It means that you can use new CSS as an enhancement, knowing that no error will occur if it is not understood — the browser will either get the new feature or not. This enables basic fallback styling.
+                This works particularly well when you want to use a value that is quite new and not supported everywhere. For example, some older browsers do not support calc() as a value. I might give a fallback width for a box in pixels, then go on to give a width with a calc() value of 100% - 50px. Old browsers will use the pixel version, ignoring the line about calc() as they don't understand it. New browsers will interpret the line using pixels, but then override it with the line using calc() as that line appears later in the cascade.
+            </p>
+            <code>
+                .box {
+                  width: 500px;
+                  width: calc(100% - 50px);
+                }
+            </code>
+            <p>We will look at many more ways to support varying browsers in later lessons.</p>
+        </section>
+        <section id="Reference" class="main-section">
+            <header>
+                <h2>Reference</h2>
+            </header>
+            <ul>
+                <li>All the documentation in this page is taken from <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">MDN</a></li>
+            </ul>
+        </section>
+    </main>
+</body>
+
+</html>
